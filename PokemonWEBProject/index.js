@@ -34,12 +34,24 @@ image.onload = () => {
 }
 
 window.addEventListener('keydown', (e) => { //btw e stands for event
-    console.log(e.key) //outputs the event on the console subtab in inspect element
+    //outputs the event on the console subtab in inspect element
     //e.key will log out the exact key that the user is pressing down on
 })
 //need to have events for specific keys 
 switch (e.key) {
     case 'w':
+        console.log('pressed w key')
+        break 
+
+    case 'a':
+        console.log('pressed w key')
+        break 
+
+    case 's':
+        console.log('pressed w key')
+        break 
+
+    case 'd':
         console.log('pressed w key')
         break 
         // Whenever e.key is equal to W, we want to call whatever code that should be in between of case and break
