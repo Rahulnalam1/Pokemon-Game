@@ -17,22 +17,30 @@ playerImage.src = 'playerDown.png'
 
 class Sprite {
     constructor({
-        position, velocity}) { 
+        position, velocity, image}) { 
             // whenever you create a new isntance of a sprite we automatically call the code in the function
         this.position = position 
+        this.image = image
     }
+
+    draw() {
+        c.drawImage(this.image, -784, -790) //used to offset our image, in simpler terms, to get the character start at a specific grid point
+
+    }
+
 }
 
 const background = new Sprite({position: {
-    x: 0, 
-    y: 0
-    }
+    x: -784, 
+    y: -790
+    },
+    image: image //being passed through the constructer and then going to this.image
 }) //new sprite created within the background constant
 //Create a new sprite, whenever a new sprite is created is going to pass one single object
 
 function animate() {
     window.requestAnimationFrame(animate) // this will call animate function, infinite loop
-    c.drawImage(image, -784, -790) //used to offset our image, in simpler terms, to get the character start at a specific grid point
+    background.draw()
     c.drawImage(playerImage,
         0, //first argument (x-cordinate)
         0, // Y-axis crop
