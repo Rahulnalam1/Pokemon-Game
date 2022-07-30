@@ -27,7 +27,7 @@ const background = new Sprite({position: {
     x: 0, 
     y: 0
     }
-}) 
+}) //new sprite created within the background constant
 //Create a new sprite, whenever a new sprite is created is going to pass one single object
 
 function animate() {
