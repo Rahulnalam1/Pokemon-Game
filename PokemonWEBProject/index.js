@@ -70,13 +70,14 @@ function animate() {
         //rest of the lines from 26 are actual lines to have the image rendered out to the canvas page
     )
 
-    if (keys.w.pressed) {
-        background.position.y = background.position.y + 3 //allows to move upwards
-    }
-
+    if (keys.w.pressed && lastKey === 'w') background.position.y = background.position.y + 3 //allows to move upwards
+    else if (keys.a.pressed && lastKey === 'a') background.position.x = background.position.x + 3
+    else if (keys.d.pressed && lastKey === 'd') background.position.x = background.position.x - 3
+    else if (keys.s.pressed && lastKey === 's') background.position.y = background.position.y - 3
 }
 animate()
 
+let lastKey = ''
 window.addEventListener('keydown', (e) => { //btw e stands for event
     //outputs the event on the console subtab in inspect element
     //e.key will log out the exact key that the user is pressing down on
@@ -84,18 +85,22 @@ window.addEventListener('keydown', (e) => { //btw e stands for event
 switch (e.key) {
     case 'w':
         keys.w.pressed = true  
+        lastKey = 'w' //track whatever the last key pressed down was same with lines 93 98 and 103
         break 
 
     case 'a':
         keys.a.pressed = true 
+        lastKey = 'a'
         break 
 
     case 's':
         keys.s.pressed = true 
+        lastKey = 's'
         break 
 
     case 'd':
         keys.d.pressed = true 
+        lastKey = 'd'
         break 
        
 }
