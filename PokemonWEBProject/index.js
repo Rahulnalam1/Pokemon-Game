@@ -71,7 +71,7 @@ function animate() {
     )
 
     if (keys.w.pressed) {
-        background.position.y = background.position.y - 3
+        background.position.y = background.position.y + 3 //allows to move upwards
     }
 
 }
