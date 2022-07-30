@@ -24,7 +24,7 @@ class Sprite {
     }
 
     draw() {
-        c.drawImage(this.image, -784, -790) //used to offset our image, in simpler terms, to get the character start at a specific grid point
+        c.drawImage(this.image, this.position.x, this.position.y) //used to offset our image, in simpler terms, to get the character start at a specific grid point
 
     }
 
@@ -70,6 +70,9 @@ function animate() {
         //rest of the lines from 26 are actual lines to have the image rendered out to the canvas page
     )
 
+    if (keys.w.pressed) {
+        background.position.y = background.position.y - 3
+    }
 
 }
 animate()
@@ -96,6 +99,28 @@ switch (e.key) {
         break 
        
 }
-console.log(keys) 
 })
+
+window.addEventListener('keyup', (e) => { //keyup function
+
+switch (e.key) {
+    case 'w':
+        keys.w.pressed = false 
+        break 
+
+    case 'a':
+        keys.a.pressed = false
+        break 
+
+    case 's':
+        keys.s.pressed = false
+        break 
+
+    case 'd':
+        keys.d.pressed = false
+        break 
+       
+}
+})
+
 
