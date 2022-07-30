@@ -15,8 +15,23 @@ image.src = 'PokeTown.png'; //sets new image on the html canvas page
 const playerImage = new Image() //Created new const for playerImage 
 playerImage.src = 'playerDown.png' 
 
-image.onload = () => { 
+class Sprite {
+    constructor({
+        position, velocity}) { 
+            // whenever you create a new isntance of a sprite we automatically call the code in the function
+        this.position = position 
+    }
+}
 
+const background = new Sprite({position: {
+    x: 0, 
+    y: 0
+    }
+}) 
+//Create a new sprite, whenever a new sprite is created is going to pass one single object
+
+function animate() {
+    window.requestAnimationFrame(animate) // this will call animate function, infinite loop
     c.drawImage(image, -784, -790) //used to offset our image, in simpler terms, to get the character start at a specific grid point
     c.drawImage(playerImage,
         0, //first argument (x-cordinate)
@@ -31,12 +46,13 @@ image.onload = () => {
         // lines 22-25 are for cropping arguments 
         //rest of the lines from 26 are actual lines to have the image rendered out to the canvas page
     )
+
 }
+animate()
 
 window.addEventListener('keydown', (e) => { //btw e stands for event
     //outputs the event on the console subtab in inspect element
     //e.key will log out the exact key that the user is pressing down on
-})
 //need to have events for specific keys 
 switch (e.key) {
     case 'w':
@@ -44,21 +60,18 @@ switch (e.key) {
         break 
 
     case 'a':
-        console.log('pressed w key')
+        console.log('pressed a key')
         break 
 
     case 's':
-        console.log('pressed w key')
+        console.log('pressed s key')
         break 
 
     case 'd':
-        console.log('pressed w key')
+        console.log('pressed d key')
         break 
-        // Whenever e.key is equal to W, we want to call whatever code that should be in between of case and break
-        //so to make that make sense, this case will only be activated when the user hits the w key
+       
 }
-//things to add on the notion journal entry -> how does a switch statement work in vanilla js 
-//also what is vanilla js and what is the framework for it
-//think about more questions like these
- 
+})
+
 //1.45.27 time 
