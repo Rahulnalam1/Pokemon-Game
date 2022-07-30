@@ -38,6 +38,21 @@ const background = new Sprite({position: {
 }) //new sprite created within the background constant
 //Create a new sprite, whenever a new sprite is created is going to pass one single object
 
+const keys = {
+    w: {
+        pressed: false
+    },
+    a: {
+        pressed: false
+    },
+    s: {
+        pressed: false
+    },
+    d: {
+        pressed: false
+    }
+}
+
 function animate() {
     window.requestAnimationFrame(animate) // this will call animate function, infinite loop
     background.draw()
@@ -55,6 +70,7 @@ function animate() {
         //rest of the lines from 26 are actual lines to have the image rendered out to the canvas page
     )
 
+
 }
 animate()
 
@@ -64,21 +80,22 @@ window.addEventListener('keydown', (e) => { //btw e stands for event
 //need to have events for specific keys 
 switch (e.key) {
     case 'w':
-        console.log('pressed w key')
+        keys.w.pressed = true  
         break 
 
     case 'a':
-        console.log('pressed a key')
+        keys.a.pressed = true 
         break 
 
     case 's':
-        console.log('pressed s key')
+        keys.s.pressed = true 
         break 
 
     case 'd':
-        console.log('pressed d key')
+        keys.d.pressed = true 
         break 
        
 }
+console.log(keys) 
 })
 
