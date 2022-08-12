@@ -14,6 +14,8 @@ for (let i = 0; i < collisions.length; i+= 70){
 }
 
 class Boundary {
+    static width = 48
+    static height = 48
     constructor({position}) {
         this.position = position
         this.width = 48 
@@ -28,9 +30,17 @@ class Boundary {
 
 const boundaries = []
 
-collisionsMap.forEach(row => {
-    row.forEach(sybmol => {
-        console.log(symbol)
+collisionsMap.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        if (symbol === 1025)
+        boundaries.push(
+            new Boundary({
+                position: {
+            x: j * Boundary.width,
+            y: i * Boundary.height
+                }
+            })
+        )
     })
 })
 
@@ -86,6 +96,9 @@ const keys = {
 function animate() {
     window.requestAnimationFrame(animate) // this will call animate function, infinite loop
     background.draw()
+    boundaries.forEach(boundary => {
+        boundary.draw()
+    })
     c.drawImage(playerImage,
         0, //first argument (x-cordinate)
         0, // Y-axis crop
