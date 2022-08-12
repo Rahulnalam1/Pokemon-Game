@@ -11,10 +11,30 @@ canvas.height = 576 //height of the canvas
 const collisionsMap = []
 for (let i = 0; i < collisions.length; i+= 70){
     collisionsMap.push(collisions.slice(i, 70 + i))
-   
 }
-console.log(collisionsMap);
-// this is going to keep going till we loop through the maps height
+
+class Boundary {
+    constructor({position}) {
+        this.position = position
+        this.width = 48 
+        this.height = 48 
+    }
+
+    draw() {
+        c.fillStyle = 'red'
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
+
+const boundaries = []
+
+collisionsMap.forEach(row => {
+    row.forEach(sybmol => {
+        console.log(symbol)
+    })
+})
+
+
 
 //c.fillStyle = 'white' //changes fillRect to white canvas on top of the black context
 //c.fillRect(0, 0, canvas.width, canvas.height)
