@@ -6,10 +6,18 @@ console.log(collisions);
 canvas.width = 1024 //width of the canvas
 canvas.height = 576 //height of the canvas
 
-console.log(c) //! outputs the context
+//console.log(c) //! outputs the context
 
-c.fillStyle = 'white' //changes fillRect to white canvas on top of the black context
-c.fillRect(0, 0, canvas.width, canvas.height)
+const collisionsMap = []
+for (let i = 0; i < collisions.length; i+= 70){
+    collisionsMap.push(collisions.slice(i, 70 + i))
+   
+}
+console.log(collisionsMap);
+// this is going to keep going till we loop through the maps height
+
+//c.fillStyle = 'white' //changes fillRect to white canvas on top of the black context
+//c.fillRect(0, 0, canvas.width, canvas.height)
 
 const image = new Image()
 image.src = 'PokeTown.png'; //sets new image on the html canvas page
