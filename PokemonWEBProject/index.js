@@ -1,6 +1,8 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext("2d") //2d API c = canvasContext
 
+console.log(collisions);
+
 canvas.width = 1024 //width of the canvas
 canvas.height = 576 //height of the canvas
 
