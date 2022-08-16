@@ -29,6 +29,10 @@ class Boundary {
 }
 
 const boundaries = []
+const offset = {
+    x: -784,
+    y: -790
+}
 
 collisionsMap.forEach((row, i) => {
     row.forEach((symbol, j) => {
@@ -36,8 +40,8 @@ collisionsMap.forEach((row, i) => {
         boundaries.push(
             new Boundary({
                 position: {
-            x: j * Boundary.width,
-            y: i * Boundary.height
+            x: j * Boundary.width + offset.x,
+            y: i * Boundary.height + offset.y
                 }
             })
         )
@@ -70,9 +74,11 @@ class Sprite {
 
 }
 
+
+
 const background = new Sprite({position: {
-    x: -784, 
-    y: -790
+    x: offset.x, 
+    y: offset.y
     },
     image: image //being passed through the constructer and then going to this.image
 }) //new sprite created within the background constant
