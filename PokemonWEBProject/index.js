@@ -30,8 +30,8 @@ class Boundary {
 
 const boundaries = []
 const offset = {
-    x: -784,
-    y: -790
+    x: -1290,
+    y: -620
 }
 
 collisionsMap.forEach((row, i) => {
@@ -68,8 +68,19 @@ class Sprite {
     }
 
     draw() {
-        c.drawImage(this.image, this.position.x, this.position.y) //used to offset our image, in simpler terms, to get the character start at a specific grid point
-
+            c.drawImage(this.image, this.position.x, this.position.y) //used to offset our image, in simpler terms, to get the character start at a specific grid point
+            c.drawImage(
+                this.image,
+                0, //first argument (x-cordinate)
+                0, // Y-axis crop
+                this.image.width / 4, //crop width needs to be playerImage.width / 4 to get 1/4 of the image
+                this.image.height, //dont need to divide anything
+                canvas.width / 2 - (this.image.width / 4),
+                 canvas.height / 2 - this.image.height / 2, // use to input image onto the canvas web, also change X and Y to determine where the player should be drawn
+                //line 25 and 26 are arguements that declare placement
+                this.image.width / 4,
+                this.image.height
+            )
     }
 
 }
@@ -99,30 +110,39 @@ const keys = {
     }
 }
 
+const testBoundary = new Boundary({
+    position: {
+        x: 400, 
+        y: 400
+    }
+})
+const movables = [background, testBoundary]
 function animate() {
     window.requestAnimationFrame(animate) // this will call animate function, infinite loop
     background.draw()
-    boundaries.forEach(boundary => {
-        boundary.draw()
-    })
-    c.drawImage(playerImage,
-        0, //first argument (x-cordinate)
-        0, // Y-axis crop
-        playerImage.width / 4, //crop width needs to be playerImage.width / 4 to get 1/4 of the image
-        playerImage.height, //dont need to divide anything
-        canvas.width / 2 - (playerImage.width / 4) / 2,
-         canvas.height / 2 - playerImage.height / 2, // use to input image onto the canvas web, also change X and Y to determine where the player should be drawn
-        //line 25 and 26 are arguements that declare placement
-        playerImage.width / 4,
-        playerImage.height
-        // lines 22-25 are for cropping arguments 
-        //rest of the lines from 26 are actual lines to have the image rendered out to the canvas page
-    )
+    // boundaries.forEach(boundary => {
+    //     boundary.draw()
+    // })
+    testBoundary.draw()
+ 
 
-    if (keys.w.pressed && lastKey === 'w') background.position.y = background.position.y + 3 //allows to move upwards
-    else if (keys.a.pressed && lastKey === 'a') background.position.x = background.position.x + 3
-    else if (keys.d.pressed && lastKey === 'd') background.position.x = background.position.x - 3
-    else if (keys.s.pressed && lastKey === 's') background.position.y = background.position.y - 3
+    //if(playerImage.position.x + playerImage.width)
+
+    if (keys.w.pressed && lastKey === 'w') {
+        movables.forEach(movable => {movable.position.y += 3
+        })
+    } else if (keys.a.pressed && lastKey === 'a') {
+        movables.forEach(movable => {movable.position.x += 3
+        })
+    }
+    else if (keys.d.pressed && lastKey === 'd') {
+        movables.forEach(movable => {movable.position.x  -= 3
+        })
+    }
+    else if (keys.s.pressed && lastKey === 's') {
+        movables.forEach(movable => {movable.position.y -= 3
+        })
+    }
 }
 animate()
 
@@ -176,5 +196,3 @@ switch (e.key) {
        
 }
 })
-
-
