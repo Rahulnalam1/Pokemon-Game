@@ -61,7 +61,7 @@ playerImage.src = 'playerDown.png'
 
 class Sprite {
     constructor({
-        position, velocity, image, frames = {max: 1}}) { 
+        position, velocity, image, frames = {max: 1} }) { 
             // whenever you create a new isntance of a sprite we automatically call the code in the function
         this.position = position 
         this.image = image
