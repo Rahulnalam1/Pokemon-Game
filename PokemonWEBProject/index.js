@@ -61,10 +61,11 @@ playerImage.src = 'playerDown.png'
 
 class Sprite {
     constructor({
-        position, velocity, image}) { 
+        position, velocity, image, frames = {max: 1}}) { 
             // whenever you create a new isntance of a sprite we automatically call the code in the function
         this.position = position 
         this.image = image
+        this.frames = frames 
     }
 
     draw() {
@@ -73,19 +74,26 @@ class Sprite {
                 this.image,
                 0, //first argument (x-cordinate)
                 0, // Y-axis crop
-                this.image.width / 4, //crop width needs to be playerImage.width / 4 to get 1/4 of the image
+                this.image.width / this.frames.max,
                 this.image.height, //dont need to divide anything
-                canvas.width / 2 - (this.image.width / 4),
-                 canvas.height / 2 - this.image.height / 2, // use to input image onto the canvas web, also change X and Y to determine where the player should be drawn
-                //line 25 and 26 are arguements that declare placement
-                this.image.width / 4,
+                this.position.x, 
+                this.position.y, 
+                this.image.width / this.frames.max,
                 this.image.height
             )
     }
 
 }
-
-
+const player = new Sprite({
+    position: {
+        x: canvas.width / 2 - 192 / 4,
+        y: canvas.height / 2 - 68 / 2
+    }, 
+    image: playerImage, 
+    frames: {
+        max: 4
+    }
+})
 
 const background = new Sprite({position: {
     x: offset.x, 
@@ -124,6 +132,7 @@ function animate() {
     //     boundary.draw()
     // })
     testBoundary.draw()
+    player.draw()
  
 
     //if(playerImage.position.x + playerImage.width)
