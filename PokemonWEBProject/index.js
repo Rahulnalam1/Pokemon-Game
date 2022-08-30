@@ -65,7 +65,7 @@ class Sprite {
             // whenever you create a new isntance of a sprite we automatically call the code in the function
         this.position = position 
         this.image = image
-        this.frames = frames 
+        this.frames = frames
     }
 
     draw() {
