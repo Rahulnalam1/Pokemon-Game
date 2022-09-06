@@ -60,8 +60,7 @@ const playerImage = new Image() //Created new const for playerImage
 playerImage.src = 'playerDown.png' 
 
 class Sprite {
-    constructor({
-        position, velocity, image, frames = {max: 1} }) { 
+    constructor({position, velocity, image, frames = {max: 1} }) { 
             // whenever you create a new isntance of a sprite we automatically call the code in the function
         this.position = position 
         this.image = image
@@ -69,7 +68,7 @@ class Sprite {
     }
 
     draw() {
-            c.drawImage(this.image, this.position.x, this.position.y) //used to offset our image, in simpler terms, to get the character start at a specific grid point
+           // c.drawImage(this.image, this.position.x, this.position.y) //used to offset our image, in simpler terms, to get the character start at a specific grid point 
             c.drawImage(
                 this.image,
                 0, //first argument (x-cordinate)
