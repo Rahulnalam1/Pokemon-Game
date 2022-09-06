@@ -131,6 +131,11 @@ const testBoundary = new Boundary({
     }
 })
 const movables = [background, testBoundary]
+
+function rectangularCollision({rectangle1, rectangle2}) {
+    return (rectangle1.position.x + rectangle1.width >= rectangle2.position.x && rectangle1.position.x <= rectangle2.position.x + rectangle2.width
+        && rectangle1.position.y <= rectangle2.position.y + rectangle2.position.height && rectangle1.position.y + rectangle1.height >= rectangle2.position.y)
+}
 function animate() {
     window.requestAnimationFrame(animate) // this will call animate function, infinite loop
     background.draw()
@@ -141,9 +146,11 @@ function animate() {
     player.draw()
  
 
-    if(player.position.x + player.width >= testBoundary.position.x && player.position.x <= testBoundary.position.x + testBoundary.width
-        && player.position.y <= testBoundary.position.y + testBoundary.position.height && player.position.y + player.height >= testBoundary.position.y) { 
-        console.log("colliding");
+    if(rectangularCollision ({
+        rectangle1: player, 
+        rectangle2: testBoundary
+    })) { 
+        console.log('colliding')
     }
 
     if (keys.w.pressed && lastKey === 'w') {
